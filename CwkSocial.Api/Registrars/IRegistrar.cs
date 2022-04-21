@@ -1,6 +1,5 @@
-﻿namespace CwkSocial.Api.Registrars
-{
-    public interface IRegistrar
-    {
+﻿namespace CwkSocial.Api.Registrars {
+
+    public interface IRegistrar {
     }
 }

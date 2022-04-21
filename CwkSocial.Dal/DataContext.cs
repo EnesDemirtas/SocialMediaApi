@@ -4,11 +4,11 @@ using CwkSocial.Domain.Aggregates.UserProfileAggregate;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace CwkSocial.Dal {
-    public class DataContext : IdentityDbContext {
-        public DataContext(DbContextOptions options) : base(options){
 
+    public class DataContext : IdentityDbContext {
+
+        public DataContext(DbContextOptions options) : base(options) {
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
@@ -22,6 +22,5 @@ namespace CwkSocial.Dal {
             modelBuilder.ApplyConfiguration(new IdentityUserRoleConfig());
             modelBuilder.ApplyConfiguration(new IdentityUserTokenConfig());
         }
-
     }
 }

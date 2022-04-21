@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CwkSocial.Domain.Aggregates.UserProfileAggregate {
 
-namespace CwkSocial.Domain.Aggregates.UserProfileAggregate
-{
-    public class UserProfile
-    {
+    public class UserProfile {
 
-        private UserProfile()
-        {
+        private UserProfile() {
         }
 
         public Guid UserProfileId { get; private set; }
@@ -20,13 +12,10 @@ namespace CwkSocial.Domain.Aggregates.UserProfileAggregate
         public DateTime LastModified { get; private set; }
 
         // Factory method
-        public static UserProfile CreateUserProfile(string identityId, BasicInfo basicInfo)
-        {
+        public static UserProfile CreateUserProfile(string identityId, BasicInfo basicInfo) {
             // TODO: add validation, error handling strategies, error notification strategies
 
-
-            return new UserProfile
-            {
+            return new UserProfile {
                 IdentityId = identityId,
                 BasicInfo = basicInfo,
                 DateCreated = DateTime.UtcNow,
@@ -36,8 +25,7 @@ namespace CwkSocial.Domain.Aggregates.UserProfileAggregate
 
         // public methods
 
-        public void UpdateBasicInfo(BasicInfo newInfo)
-        {
+        public void UpdateBasicInfo(BasicInfo newInfo) {
             BasicInfo = newInfo;
             LastModified = DateTime.UtcNow;
         }

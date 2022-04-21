@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CwkSocial.Domain.Aggregates.UserProfileAggregate {
 
-namespace CwkSocial.Domain.Aggregates.UserProfileAggregate
-{
-    public class BasicInfo
-    {
-        private BasicInfo()
-        {
+    public class BasicInfo {
 
+        private BasicInfo() {
         }
 
         public string FirstName { get; private set; }
@@ -20,13 +12,11 @@ namespace CwkSocial.Domain.Aggregates.UserProfileAggregate
         public DateTime DateOfBirth { get; private set; }
         public string CurrentCity { get; private set; }
 
-        public static BasicInfo CreateBasicInfo(string firstName, string lastName, string email, 
-            string phone, DateTime dateOfBirth, string currentCity)
-        {
+        public static BasicInfo CreateBasicInfo(string firstName, string lastName, string email,
+            string phone, DateTime dateOfBirth, string currentCity) {
             // TODO: implement validation, error handling/notification strategies
 
-            return new BasicInfo
-            {
+            return new BasicInfo {
                 FirstName = firstName,
                 LastName = lastName,
                 EmailAddress = email,
