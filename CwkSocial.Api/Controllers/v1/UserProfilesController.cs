@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CwkSocial.Api.Contracts.UserProfile.Requests;
 using CwkSocial.Api.Contracts.UserProfile.Responses;
+using CwkSocial.Api.Filters;
 using CwkSocial.Application.UserProfiles.Commands;
 using CwkSocial.Application.UserProfiles.Queries;
 using MediatR;
@@ -29,6 +30,7 @@ namespace CwkSocial.Api.Controllers.v1 {
         }
 
         [HttpPost]
+        [ValidateModel]
         public async Task<IActionResult> CreateUserProfile([FromBody] UserProfileCreateUpdate profile) {
             var command = _mapper.Map<CreateUserCommand>(profile);
             var response = await _mediator.Send(command);
@@ -51,6 +53,7 @@ namespace CwkSocial.Api.Controllers.v1 {
 
         [HttpPatch]
         [Route(ApiRoutes.UserProfiles.IdRoute)]
+        [ValidateModel]
         public async Task<IActionResult> UpdateUserProfile(string id, UserProfileCreateUpdate updatedProfile) {
             var command = _mapper.Map<UpdateUserProfileBasicInfo>(updatedProfile);
             command.UserProfileId = Guid.Parse(id);
