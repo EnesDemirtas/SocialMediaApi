@@ -14,8 +14,6 @@
 
         public static BasicInfo CreateBasicInfo(string firstName, string lastName, string email,
             string phone, DateTime dateOfBirth, string currentCity) {
-            // TODO: implement validation, error handling/notification strategies
-
             return new BasicInfo {
                 FirstName = firstName,
                 LastName = lastName,
