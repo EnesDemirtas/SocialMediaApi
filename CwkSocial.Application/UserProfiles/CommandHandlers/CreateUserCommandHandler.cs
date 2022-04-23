@@ -47,6 +47,9 @@ namespace CwkSocial.Application.UserProfiles.CommandHandlers {
                     Message = $"{e.Message}"
                 };
 
+                result.IsError = true;
+                result.Errors.Add(error);
+
                 return result;
             }
         }
