@@ -1,4 +1,6 @@
 ﻿using CwkSocial.Domain.Aggregates.UserProfileAggregate;
+using CwkSocial.Domain.Exceptions;
+using CwkSocial.Domain.Validators.PostValidators;
 
 namespace CwkSocial.Domain.Aggregates.PostAggregate {
 
@@ -20,16 +22,35 @@ namespace CwkSocial.Domain.Aggregates.PostAggregate {
 
         // Factories
         public static Post CreatePost(Guid userProfileId, string textContent) {
-            return new Post {
+            var validator = new PostValidator();
+
+            var objectToValidate = new Post {
                 UserProfileId = userProfileId,
                 TextContent = textContent,
                 DateCreated = DateTime.UtcNow,
                 LastModified = DateTime.UtcNow,
             };
+
+            var validationResult = validator.Validate(objectToValidate);
+            if (validationResult.IsValid) return objectToValidate;
+
+            var exception = new PostNotValidException("Post is not valid.");
+            validationResult.Errors.ForEach(vr => exception.ValidationErrors.Add(vr.ErrorMessage));
+            throw exception;
         }
 
         // public methods
+        /// <summary>
+        /// Updates the post text
+        /// </summary>
+        /// <param name="newText">The updated post text</param>
         public void UpdatePostText(string newText) {
+            if (string.IsNullOrWhiteSpace(newText)) {
+                var exception = new PostNotValidException("Cannot update post. Post text is not valid.");
+                exception.ValidationErrors.Add("The provided text is either null or contains only whitespace");
+                throw exception;
+            }
+
             TextContent = newText;
             LastModified = DateTime.UtcNow;
         }
