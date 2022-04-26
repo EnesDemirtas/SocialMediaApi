@@ -21,6 +21,13 @@ namespace CwkSocial.Domain.Aggregates.PostAggregate {
         public IEnumerable<PostInteraction> Interactions { get { return _interactions; } }
 
         // Factories
+        /// <summary>
+        /// Creates a new post instance
+        /// </summary>
+        /// <param name="userProfileId">User Profile ID</param>
+        /// <param name="textContent">Post content</param>
+        /// <returns><see cref="Post"/></returns>
+        /// <exception cref="PostNotValidException"></exception>
         public static Post CreatePost(Guid userProfileId, string textContent) {
             var validator = new PostValidator();
 

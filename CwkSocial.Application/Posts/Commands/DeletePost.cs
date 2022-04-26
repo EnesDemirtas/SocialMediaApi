@@ -2,9 +2,9 @@
 using CwkSocial.Domain.Aggregates.PostAggregate;
 using MediatR;
 
-namespace CwkSocial.Application.Posts.Queries {
+namespace CwkSocial.Application.Posts.Commands {
 
-    public class GetPostById : IRequest<OperationResult<Post>> {
+    public class DeletePost : IRequest<OperationResult<Post>> {
         public Guid PostId { get; set; }
     }
 }

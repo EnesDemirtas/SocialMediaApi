@@ -39,8 +39,6 @@ namespace CwkSocial.Application.UserProfiles.CommandHandlers {
                     };
                     result.Errors.Add(error);
                 });
-
-                return result;
             } catch (Exception e) {
                 var error = new Error {
                     Code = ErrorCode.UnknownError,
@@ -49,9 +47,8 @@ namespace CwkSocial.Application.UserProfiles.CommandHandlers {
 
                 result.IsError = true;
                 result.Errors.Add(error);
-
-                return result;
             }
+            return result;
         }
     }
 }
