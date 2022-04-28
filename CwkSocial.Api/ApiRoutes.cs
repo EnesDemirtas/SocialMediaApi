@@ -12,5 +12,10 @@
             public const string PostComments = "{postId}/comments";
             public const string CommentById = "{postId}/comments/{commentId}";
         }
+
+        public static class Identity {
+            public const string Login = "login";
+            public const string Registration = "registration";
+        }
     }
 }
