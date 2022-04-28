@@ -6,11 +6,6 @@ using CwkSocial.Domain.Aggregates.PostAggregate;
 using CwkSocial.Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CwkSocial.Application.Posts.CommandHandlers {
 

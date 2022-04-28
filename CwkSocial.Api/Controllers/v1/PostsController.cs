@@ -3,10 +3,8 @@ using CwkSocial.Api.Contracts.Common;
 using CwkSocial.Api.Contracts.Posts.Requests;
 using CwkSocial.Api.Contracts.Posts.Responses;
 using CwkSocial.Api.Filters;
-using CwkSocial.Application.Enums;
 using CwkSocial.Application.Posts.Commands;
 using CwkSocial.Application.Posts.Queries;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CwkSocial.Api.Controllers.v1 {
