@@ -20,9 +20,7 @@ namespace CwkSocial.Application.Posts.QueryHandlers {
             var post = await _ctx.Posts.FirstOrDefaultAsync(p => p.PostId == request.PostId);
 
             if (post is null) {
-                result.IsError = true;
-                var error = new Error { Code = ErrorCode.NotFound, Message = $"No Post found with ID {request.PostId}" };
-                result.Errors.Add(error);
+                result.AddError(ErrorCode.NotFound, string.Format(PostErrorMessages.PostNotFound, request.PostId));
                 return result;
             }
 

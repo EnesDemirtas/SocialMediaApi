@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CwkSocial.Api.Contracts.Identity;
 using CwkSocial.Application.Identity.Commands;
+using CwkSocial.Application.Identity.Dtos;
 
 namespace CwkSocial.Api.MappingProfiles {
 
@@ -8,6 +9,8 @@ namespace CwkSocial.Api.MappingProfiles {
 
         public IdentityMappings() {
             CreateMap<UserRegistration, RegisterIdentity>();
+            CreateMap<Login, LoginCommand>();
+            CreateMap<IdentityUserProfileDto, IdentityUserProfile>();
         }
     }
 }

@@ -13,13 +13,12 @@ namespace CwkSocial.Api.Contracts.UserProfile.Requests {
         public string LastName { get; set; }
 
         [Required]
-        [EmailAddress]
-        public string EmailAddress { get; set; }
-
-        public string Phone { get; set; }
+        [MinLength(3)]
+        [MaxLength(50)]
+        public string UserName { get; set; }
 
         [Required]
-        public DateTime DateOfBirth { get; set; }
-        public string CurrentCity { get; set; }
+        [EmailAddress]
+        public string EmailAddress { get; set; }
     }
 }

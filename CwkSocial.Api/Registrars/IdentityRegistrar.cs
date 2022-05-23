@@ -1,4 +1,7 @@
-﻿namespace CwkSocial.Api.Registrars {
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace CwkSocial.Api.Registrars {
 
     public class IdentityRegistrar : IWebApplicationBuilderRegistrar {
 

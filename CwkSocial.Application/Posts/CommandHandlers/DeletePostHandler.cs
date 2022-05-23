@@ -22,9 +22,12 @@ namespace CwkSocial.Application.Posts.CommandHandlers {
                 var post = await _ctx.Posts.FirstOrDefaultAsync(p => p.PostId == request.PostId);
 
                 if (post is null) {
-                    result.IsError = true;
-                    var error = new Error { Code = ErrorCode.NotFound, Message = $"No Post found with ID {request.PostId}" };
-                    result.Errors.Add(error);
+                    result.AddError(ErrorCode.NotFound, string.Format(PostErrorMessages.PostNotFound, request.PostId));
+                    return result;
+                }
+
+                if (post.UserProfileId != request.UserProfileId) {
+                    result.AddError(ErrorCode.PostDeleteNotPossible, PostErrorMessages.PostDeleteNotPossible);
                     return result;
                 }
 
@@ -33,13 +36,7 @@ namespace CwkSocial.Application.Posts.CommandHandlers {
 
                 result.Payload = post;
             } catch (Exception e) {
-                var error = new Error {
-                    Code = ErrorCode.UnknownError,
-                    Message = $"{e.Message}"
-                };
-
-                result.IsError = true;
-                result.Errors.Add(error);
+                result.AddUnknownError(e.Message);
             }
 
             return result;
